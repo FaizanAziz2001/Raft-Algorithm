@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_package = "ex.grpc";
+
+package Raft;
+
+service Ping{
+
+    rpc sendStatus (Request) returns (Reply) {}
+    rpc RequestForVote (Request) returns (Reply) {}
+
+}
+
+
+//for sending data
+message Request{
+    int32 nodeid=1;
+    int32 tnum=2;
+    string status=3;
+    string data=4;
+    string filename=5;
+}
+
+//for receiving data
+message Reply {
+    string data = 1;
+}
